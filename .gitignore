@@ -1,12 +1,103 @@
-# Ignore environment files
+# ===============================
+# Environment & secrets
+# ===============================
 .env
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# Python cache files
+# ===============================
+# Python cache / compiled files
+# ===============================
 __pycache__/
 *.pyc
+*.py[codz]
+*$py.class
 
-# VS Code settings (optional)
-.vscode/
-
-# Jupyter checkpoints (optional)
+# ===============================
+# Jupyter
+# ===============================
 .ipynb_checkpoints/
+
+# ===============================
+# Build / distribution
+# ===============================
+build/
+dist/
+develop-eggs/
+eggs/
+.eggs/
+wheels/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+MANIFEST
+
+# ===============================
+# Virtualenv & tooling
+# ===============================
+.Python
+.pdm-python
+.pdm-build/
+.pixi
+__pypackages__/
+
+# ===============================
+# Testing & coverage
+# ===============================
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+
+# ===============================
+# Logs & databases
+# ===============================
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# ===============================
+# IDEs & editors
+# ===============================
+.vscode/
+.idea/
+.spyderproject
+.spyproject
+.ropeproject
+
+# ===============================
+# Type checkers & linters
+# ===============================
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# ===============================
+# OS / misc
+# ===============================
+.DS_Store
+.cursorignore
+.cursorindexingignore
+
+# ===============================
+# Docs / sites
+# ===============================
+docs/_build/
+site/
+
+# ===============================
+# Celery / others
+# ===============================
+celerybeat-schedule
+celerybeat.pid
