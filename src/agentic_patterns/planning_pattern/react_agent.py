@@ -1,5 +1,6 @@
 import json
 import re
+import os
 
 from colorama import Fore
 from dotenv import load_dotenv
@@ -75,7 +76,7 @@ class ReactAgent:
         model: str = "llama-3.3-70b-versatile",
         system_prompt: str = BASE_SYSTEM_PROMPT,
     ) -> None:
-        self.client = Groq()
+        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
         self.model = model
         self.system_prompt = system_prompt
         self.tools = tools if isinstance(tools, list) else [tools]

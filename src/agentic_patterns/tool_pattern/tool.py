@@ -44,12 +44,14 @@ def validate_arguments(tool_call: dict, tool_signature: dict) -> dict:
         "str": str,
         "bool": bool,
         "float": float,
+        "list": list,
+        "dict": dict
     }
 
     for arg_name, arg_value in tool_call["arguments"].items():
         expected_type = properties[arg_name].get("type")
 
-        if not isinstance(arg_value, type_mapping[expected_type]):
+        if expected_type in type_mapping and not isinstance(arg_value, type_mapping[expected_type]):
             tool_call["arguments"][arg_name] = type_mapping[expected_type](arg_value)
 
     return tool_call
@@ -88,7 +90,7 @@ class Tool:
 
 def tool(fn: Callable):
     """
-    A decorator that wraps a function into a Tool object.
+    A decorator that wraps a function into a Tool object immediately.
 
     Args:
         fn (Callable): The function to be wrapped.
@@ -96,11 +98,9 @@ def tool(fn: Callable):
     Returns:
         Tool: A Tool object containing the function, its name, and its signature.
     """
-
-    def wrapper():
-        fn_signature = get_fn_signature(fn)
-        return Tool(
-            name=fn_signature.get("name"), fn=fn, fn_signature=json.dumps(fn_signature)
-        )
-
-    return wrapper()
+    fn_signature = get_fn_signature(fn)
+    return Tool(
+        name=fn_signature.get("name"),
+        fn=fn,
+        fn_signature=json.dumps(fn_signature)
+    )
