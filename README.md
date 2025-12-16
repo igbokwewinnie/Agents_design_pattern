@@ -263,8 +263,8 @@ It is ideal for:
 🚀 Installation
 1. Clone the Repository
 ```
-git clone https://github.com/yourusername/agentic-patterns-from-scratch.git
-cd agentic-patterns-from-scratch
+git clone https://github.com/yourusername/agents_design_pattern.git
+cd agents_design_pattern
 ```
 2. Set Up Environment Variables
 Create a .env file in the project root:
